@@ -7,7 +7,7 @@ const db = knexjs({
     user: config.db.user,
     password: config.db.password,
     database: config.db.name,
-    /*socketPath:config.db.socketPath*/
+    socketPath:config.db.socketPath
   },
   pool: { min: 0, max: 10 },
 });

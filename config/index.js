@@ -17,7 +17,7 @@ const config = convict({
     socketPath: {
       doc: 'Database Socket Path',
       format: '*',
-      default: '/cloudsql/direct-shadow-279022:us-central1:test',
+      default: null,
       env: 'CLOUD_SQL_CONNECTION',
     },
     name: {
@@ -43,7 +43,7 @@ const config = convict({
     password: {
       doc: 'database password',
       format: '*',
-      default: '3A0dgJ22Eq8jvCws',
+      default: '',
       env: 'DB_PASSWORD',
     },
   },

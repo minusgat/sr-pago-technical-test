@@ -68,7 +68,7 @@ class CustomerController {
   async getCustomerTickets(req, res, next) {
     try {
       const customerId = req.params.id;
-      const result = await this.customerService.customerCheckout({customerId, movieShowId});
+      const result = await this.customerService.getCustomerTickets({customerId});
       if (result) {
         const token = await this.jwt.create(result);
         res.status(201).json(token);
@@ -78,8 +78,6 @@ class CustomerController {
       next(ApiError.internal(`Oh no :o we cant't checkout your ticket!`));
     }
   }
-
-
 }
 
 module.exports = CustomerController;
