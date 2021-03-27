@@ -5,8 +5,9 @@ const db = knexjs({
   client: 'mysql',
   connection: {
     user: config.db.user,
-    password: '3A0dgJ22Eq8jvCws',
+    password: config.db.password,
     database: config.db.name,
+    /*socketPath:config.db.socketPath*/
   },
   pool: { min: 0, max: 10 },
 });

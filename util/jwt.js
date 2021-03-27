@@ -8,7 +8,7 @@ const create = (payloadData) => {
   return new Promise((resolve, reject) => {
     let payload = {
       ...payloadData,
-      expirationDate: moment().add(3, 'minutes').format(),
+      expirationDate: moment().add(3, 'hours').format(),
     }
     jwt.sign(payload, secret, {}, (error, token) => {
       if (error) return reject(error)

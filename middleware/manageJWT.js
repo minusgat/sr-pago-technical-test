@@ -24,8 +24,8 @@ function validateJWT() {
           const verifiedToken = await jwt.verify(token)
           if (verifiedToken)
             next()
-        }
-        next(ApiError.badRequest(`It's look like you didn't provide a valid or active Token`));
+        } else
+          next(ApiError.badRequest(`It's look like you didn't provide a valid or active Token`));
       } else next(ApiError.badRequest(`It's look like you didn't provide a Bearer Authorization`))
     } catch (error) {
       next(ApiError.unauthorized(error))

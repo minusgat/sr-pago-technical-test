@@ -39,6 +39,30 @@ class CustomerDao {
       throw err;
     }
   }
+
+  async customerCheckout(customerId,movieShowId) {
+    try {
+      const movies = await this.db({mS: 'movieShow'})
+        .select({id: 'mS.id'}, 'name', 'resume', 'photoUrl', 'screeningDate','city')
+        .leftJoin('movies', 'mS.movieId', 'movies.id')
+        .where('mS.id', movieShowId);
+      return movies && movies.length >= 1 ? movies[0] : null;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async getCustomerTickets(id) {
+    try {
+      const customers = await this.db
+        .select('id', 'username', 'createdDate', 'city', 'email')
+        .from('customers')
+        .where('id', id);
+      return customers && customers.length >= 1 ? customers[0] : null;
+    } catch (err) {
+      throw err;
+    }
+  }
 }
 
 module.exports = CustomerDao;
